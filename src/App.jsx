@@ -2,7 +2,8 @@ import React from 'react'
 import { Routes, Route,Link } from "react-router-dom";
 import Counter from './Components/Counter'
 import Person from './Components/Person';
-import ApiMock from './Components/ApiMock';
+import Client from './Components/Client';
+import Commande from './Components/Commande';
 
 function App() {
 
@@ -13,10 +14,9 @@ function App() {
       <h1 className='p-3 text-2xl'>My App</h1>
     <div className='flex gap-3 justify-center mb-2'>
       <Link to='/counter'  className='bg-red-400 rounded p-4'>counter</Link>
-
       <Link to='/person' className='bg-red-400 rounded p-4'>person</Link>
-
-      <Link to='/api' className='bg-red-400 rounded p-4'>api</Link>
+      <Link to='/client' className='bg-red-400 rounded p-4'>client</Link>
+      <Link to='/commande' className='bg-red-400 rounded p-4'>commande</Link>
     </div>
     
     </div>
@@ -24,7 +24,8 @@ function App() {
     <Routes>
       <Route path="/counter" element={<Counter />} />
       <Route path="/person" element={<Person />} />
-      <Route path="/api" element={<ApiMock />} />
+      <Route path="/client" element={<Client />} />
+      <Route path="/commande" element={<Commande />} />
     </Routes>
       
     </>
