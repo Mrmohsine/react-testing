@@ -143,30 +143,47 @@ export default function Commande() {
           {editingCommande ? "Update" : "Submit"}
         </button>
       </form>
-
-      {state.result.length > 0 ? (
-        <ul>
-          {state.result.map((item) => (
-            <li key={item.id}>
-              {item.client} - {item.date} - {item.montant} DH
-              <button
-                className="bg-green-100 p-2 rounded ml-2"
-                onClick={() => setEditingCommande(item)}
-              >
-                Update
-              </button>
-              <button
-                className="bg-red-100 p-2 rounded ml-2"
-                onClick={() => deleteData(item.id)}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Loading data...</p>
-      )}
+      <table className="min-w-full bg-white border border-gray-300 shadow-md rounded-lg">
+  <thead>
+    <tr className="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
+      <th className="py-3 px-6 text-left">Nom</th>
+      <th className="py-3 px-6 text-left">Date</th>
+      <th className="py-3 px-6 text-left">Montant (DH)</th>
+      <th className="py-3 px-6 text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody className="text-gray-600 text-sm">
+    {state.result.length > 0 ? (
+      state.result.map((item) => (
+        <tr key={item.id} className="border-b border-gray-300 hover:bg-gray-100">
+          <td className="py-3 px-6">{item.client}</td>
+          <td className="py-3 px-6">{item.date}</td>
+          <td className="py-3 px-6">{item.montant} DH</td>
+          <td className="py-3 px-6 text-center">
+            <button
+              className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg mr-2 transition"
+              onClick={() => setEditingCommande(item)}
+            >
+              Update
+            </button>
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg transition"
+              onClick={() => deleteData(item.id)}
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan="4" className="py-4 px-6 text-center text-gray-500">
+          Loading data...
+        </td>
+      </tr>
+    )}
+  </tbody>
+</table>
     </div>
   );
 }

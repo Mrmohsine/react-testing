@@ -123,30 +123,45 @@ export default function Client() {
         </button>
       </form>
 
-      {state.result.length > 0 ? (
-        <ul>
-          {state.result.map((item) => (
-            <li key={item.id}>
-              {item.name} - {item.region} -
-              <button
-                className="bg-green-100 p-2 rounded"
-                onClick={() => setEditingClient(item)}
-              >
-                Update
-              </button>
-              -
-              <button
-                className="bg-red-100 p-2 rounded"
-                onClick={() => deleteData(item.id)}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Loading data...</p>
-      )}
+      <table className="min-w-full bg-white border border-gray-300 shadow-md rounded-lg">
+  <thead>
+    <tr className="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
+      <th className="py-3 px-6 text-left">Name</th>
+      <th className="py-3 px-6 text-left">Region</th>
+      <th className="py-3 px-6 text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody className="text-gray-600 text-sm">
+    {state.result.length > 0 ? (
+      state.result.map((item) => (
+        <tr key={item.id} className="border-b border-gray-300 hover:bg-gray-100">
+          <td className="py-3 px-6">{item.name}</td>
+          <td className="py-3 px-6">{item.region}</td>
+          <td className="py-3 px-6 text-center">
+            <button
+              className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg mr-2 transition"
+              onClick={() => setEditingClient(item)}
+            >
+              Update
+            </button>
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg transition"
+              onClick={() => deleteData(item.id)}
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan="3" className="py-4 px-6 text-center text-gray-500">
+          Loading data...
+        </td>
+      </tr>
+    )}
+  </tbody>
+</table>
     </div>
   );
 }

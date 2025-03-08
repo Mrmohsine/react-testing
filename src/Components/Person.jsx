@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 
 const initialState = { name: "mohsine", email: "mohsine@gmail.com" };
 
-function reducerP(state, action) {
+export function reducerP(state, action) {
   switch (action.type) {
     case "setName":
       return { ...state, name: action.payload };
@@ -44,8 +44,15 @@ export default function Person() {
             onChange={(e) => dispatchValue("setEmail",e)}
             className="border p-1 m-2"
           />
-           <button onClick={()=>dispatch('reset')} className="bg-red-400 rounded-xl p-3">reset</button>
-          
+          <button
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch({ type: "reset" });
+          }}
+          className="bg-red-400 rounded-xl p-3"
+        >
+          Reset
+        </button>
         </form>
       </div>
     </>

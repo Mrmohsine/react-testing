@@ -5,6 +5,8 @@ import Person from './Components/Person';
 import Client from './Components/Client';
 import Commande from './Components/Commande';
 
+import Notice from './Components/Notice';
+
 function App() {
 
 
@@ -12,14 +14,14 @@ function App() {
     <>
     <div className='text-center'>
       <h1 className='p-3 text-2xl'>My App</h1>
-    <div className='flex gap-3 justify-center mb-2'>
-      <Link to='/counter'  className='bg-red-400 rounded p-4'>counter</Link>
-      <Link to='/person' className='bg-red-400 rounded p-4'>person</Link>
-      <Link to='/client' className='bg-red-400 rounded p-4'>client</Link>
-      <Link to='/commande' className='bg-red-400 rounded p-4'>commande</Link>
+      <div className='flex gap-3 justify-center mb-2'>
+        <Link to='/counter'  className='bg-red-400 rounded p-4'>counter</Link>
+        <Link to='/person' className='bg-red-400 rounded p-4'>person</Link>
+        <Link to='/client' className='bg-red-400 rounded p-4'>client</Link>
+        <Link to='/commande' className='bg-red-400 rounded p-4'>commande</Link>
+      </div>
     </div>
-    
-    </div>
+    <Notice />
     
     <Routes>
       <Route path="/counter" element={<Counter />} />
@@ -27,6 +29,7 @@ function App() {
       <Route path="/client" element={<Client />} />
       <Route path="/commande" element={<Commande />} />
     </Routes>
+    
       
     </>
   )
